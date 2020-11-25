@@ -1,0 +1,18 @@
+.form-submit-btn{
+  outline: none;
+  border: none;
+  color: #fff;
+  background: #44bd2d;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 18px;
+  box-shadow: 0 4px 4px -4px #222;
+  transition:background 0.3s;
+  cursor:pointer;
+  &:hover{
+    background: #338d22
+  }
+  &:active{
+    box-shadow: 0 1px 1px -1px #000;
+  }
+}

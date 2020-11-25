@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+</head>
+<body>
+
+    <form id="custom-form" style="max-width:800px;margin:auto;">
+        <div>
+            <span>1</span>
+            <input value="543534" data-cvf class="col-sm-10 col-md-5 col-lg-4 col-xl-4" name="name" id="startFill" placeholder="" data-cvf-label="Name" />
+            <span>3</span>
+        </div>
+        <input data-cvf class="col-sm-10 col-md-5 col-lg-4 col-xl-4" value="12123423" type="text" name="phone" placeholder="" data-cvf-label="Phone NO." data-mask="###-###-####"/>
+        <input data-cvf class="col-sm-10 col-md-5 col-lg-4 col-xl-4"data-cvf-material="false" type="text" name="email" placeholder="" data-cvf-label="Email"  />
+        <input data-cvf class="col-12" type="password" name="password" placeholder="" data-cvf-label="Password" data-cvf-eyeicon  data-cvf-remove-msg-gap/>
+        <select data-cvf class="col-sm-10 col-md-5 col-lg-5 " name="platform" data-cvf-label="Preferred Advertising Platform">
+            <option value="volvo" disabled>Choose one</option>
+            <option value="1">opt 1</option>
+            <option value="2">opt 2</option>
+            <option value="3">opt 3</option>
+            <option value="4">opt 4</option>
+        </select>
+        <select data-cvf class="col-sm-10 col-md-10 col-lg-7 " data-cvf-material="false" name="multiple" data-cvf-label="Multiple Choose" data-cvf-multiple="true">
+            <option disabled>Choose multiple</option>
+            <option value="1">opt 1</option>
+            <option value="2">opt 2</option>
+            <option value="3">opt 3</option>
+            <option value="4">opt 4</option>
+            <option value="5">opt 5</option>
+            <option value="6">opt 6</option>
+            <option value="7">opt 7</option>
+            <option value="8">opt 8</option>
+        </select>
+        <textarea data-cvf class="col-sm-10 col-lg-12" rows="8"  data-cvf-material="false" name="message" placeholder=""  data-cvf-label="Message"></textarea>
+        <input data-cvf class="col-sm-10 col-lg-12" type="date" name="date" data-cvf-label="Select Date"
+               data-cvf-from="2022-1-1" data-cvf-to="2017-4-6" data-cvf-initDate="2022-1-1" data-cvf-initView="day"/>
+        <input data-cvf class="col-sm-10 col-lg-12" type="time" name="time" data-cvf-label="Select Time" data-cvf-initHour="13" data-cvf-initMinute="38" />
+        <input data-cvf class="col-sm-10 col-lg-12" type="datetime-local" name="datetime" data-cvf-label="Select DateTime"
+               data-cvf-from="2022-1-1" data-cvf-to="2017-4-6" data-cvf-initDate="2022-1-1" data-cvf-initView="day"/>
+        <input data-cvf class="col-sm-10 col-lg-12"  type="checkbox" checked value="5" name="include email" placeholder="" data-cvf-label="Include email"  />
+        <div class="col-sm-10 col-lg-12" style="text-align: center;">
+            <button data-cvf  type="submit" class="form-submit-btn" data-cvf-submit="1" >Submit</button>
+        </div>
+    </form>
+    <div id="showResult"></div>
+</body>
+
+</html>
