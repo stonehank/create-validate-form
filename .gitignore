@@ -334,3 +334,4 @@ draft/
 coverage/
 dist/
 .env
+demo/

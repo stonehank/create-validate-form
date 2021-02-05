@@ -2,8 +2,11 @@ const path = require('path')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -14,25 +17,37 @@ module.exports = {
     library: 'createValidateForm',
     libraryTarget: 'window',
   },
+  resolve: {
+    extensions: ['.js'],
+  },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new CleanWebpackPlugin(),
     new WebpackBar(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'sample/index.html'),
       inject: true,
       cache: true,
     }),
+    new FriendlyErrorsWebpackPlugin(),
+    new ErrorOverlayPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/CreateValidateForm.css',
+      chunkFilename: 'css/CreateValidateForm.css',
+    }),
   ].filter(Boolean),
   optimization: {
-    minimize:true,
+    minimize: true,
     minimizer: [new TerserJSPlugin({
       cache: true,
       parallel: true,
       terserOptions: {
         parse: {
-          ecma: 8,
+          ecma: 5,
         },
         compress: {
           ecma: 5,
@@ -76,6 +91,40 @@ module.exports = {
             },
           },
           {
+            test: /\.css$/,
+            use: [
+              { loader: MiniCssExtractPlugin.loader },
+              {
+                loader: 'css-loader',
+                options: {
+                  // 开启css中的图片打包功能
+                  url: true,
+                  importLoaders: 1,
+                  sourceMap: true,
+                },
+              },
+              // All the rules in postcss.config.js
+              {
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  config: {
+                    ctx: {
+                      'postcss-preset-env': {
+                        autoprefixer: {
+                          flexbox: 'no-2009',
+                        },
+                        stage: 3,
+                      },
+                      'postcss-flexbugs-fixes': {},
+                      cssnano: {},
+                    },
+                  },
+                },
+              },
+            ],
+          },
+          {
             test: /\.scss$/,
             use: [
               { loader: MiniCssExtractPlugin.loader },
@@ -85,7 +134,7 @@ module.exports = {
                   // 开启css中的图片打包功能
                   url: true,
                   importLoaders: 2,
-                  sourceMap: false,
+                  sourceMap: true,
                 },
               },
               // All the rules in postcss.config.js
@@ -113,12 +162,13 @@ module.exports = {
             ],
           },
           {
-            test: /\.png$/,
+            test: /\.(png|jpe?g|gif|svg)$/,
             use: [
               {
                 loader: 'file-loader',
                 options: {
                   name: 'image/[name]-[contenthash:8].[ext]',
+                  publicPath:'/'
                 },
               },
             ],
@@ -127,7 +177,4 @@ module.exports = {
       },
     ],
   },
-  node:{
-    child_process: 'empty'
-  }
 }

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:main && npm publish",
+    "build": "npm run build:demo && npm run build:main",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
     "build:main": "cross-env NODE_ENV=production webpack",
     "build:demo": "cross-env NODE_ENV=production webpack --config webpack.demo.config.js"
