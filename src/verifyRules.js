@@ -68,6 +68,10 @@ const verifyRules={
     commonValidate.required('Username'),
     commonValidate.atMost(16)
   ],
+  password:[
+    commonValidate.required('Password'),
+    (v) => (v.length>=8 && !!v.match(/[A-Z]/g) && !!v.match(/[a-z]/g) && !!v.match(/[0-9]/g)) || 'Password must be at least 8 characters and contain at least one capital letter, one lower case letter, and one number. '
+  ],
   email:[
     commonValidate.required('Email'),
     (v) => verifyDetails.email(v) || verifyMsg.email()

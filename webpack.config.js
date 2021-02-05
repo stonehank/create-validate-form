@@ -100,6 +100,40 @@ module.exports = {
             },
           },
           {
+            test: /\.css$/,
+            use: [
+              { loader: MiniCssExtractPlugin.loader },
+              {
+                loader: 'css-loader',
+                options: {
+                  // 开启css中的图片打包功能
+                  url: true,
+                  importLoaders: 1,
+                  sourceMap: isDev,
+                },
+              },
+              // All the rules in postcss.config.js
+              {
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  config: {
+                    ctx: {
+                      'postcss-preset-env': {
+                        autoprefixer: {
+                          flexbox: 'no-2009',
+                        },
+                        stage: 3,
+                      },
+                      'postcss-flexbugs-fixes': {},
+                      cssnano: {},
+                    },
+                  },
+                },
+              },
+            ],
+          },
+          {
             test: /\.scss$/,
             use: [
               { loader: MiniCssExtractPlugin.loader },
@@ -137,12 +171,13 @@ module.exports = {
             ],
           },
           {
-            test: /\.png$/,
+            test: /\.(png|jpe?g|gif|svg)$/,
             use: [
               {
                 loader: 'file-loader',
                 options: {
                   name: 'image/[name]-[contenthash:8].[ext]',
+                  publicPath:'/'
                 },
               },
             ],

@@ -15,6 +15,8 @@ import createPasswordInputInside from './insert/input/createPasswordInputInside'
 import createSelectInside from './insert/select/createSelectInside'
 import createTextareaInside from './insert/textarea/createTextareaInside'
 import createDateTimeInside from './insert/datetime/createDateTimeInside'
+import createFileInside from './insert/file/createFileInside'
+import createGallery from './insert/file/createGallery'
 
 
 class CreateValidateForm extends ValidateClass{
@@ -23,6 +25,7 @@ class CreateValidateForm extends ValidateClass{
     rules = [],
     material = true,
     showSuccess = true,
+    uploadOptions={},
     // eslint-disable-next-line  no-unused-vars
     afterValid = (data) => {
     },
@@ -42,6 +45,7 @@ class CreateValidateForm extends ValidateClass{
     this.afterValid = afterValid
     this.showDropDownIdx=null
     this.showDropDownEle=null
+    this.uploadOptions=uploadOptions
     this.submitBtn=$ele.find('[data-cvf-submit]')
     $ele.addClass('row justify-content-center cvf-from')
 
@@ -111,6 +115,8 @@ class CreateValidateForm extends ValidateClass{
           this.insertDateTime($wrapper,$curEle,idx,'time')
         }else if(type==='datetime-local' || type==='datetime'){
           this.insertDateTime($wrapper,$curEle,idx,'datetime')
+        }else if(type==='file'){
+          this.insertFileInput($wrapper,$curEle,idx)
         }
         break
       case 'SELECT':
@@ -125,8 +131,7 @@ class CreateValidateForm extends ValidateClass{
 
 
   bindValidateEvent($curEle,dataObj,idx,showClearBtn,hideClearBtn){
-    $curEle.bind('change input paste', (ev) => {
-      console.log('input',$curEle.val(),ev)
+    $curEle.bind('change input paste', () => {
       setTimeout(() => {
         let val=$curEle.val()
         dataObj.result=val
@@ -159,6 +164,14 @@ class CreateValidateForm extends ValidateClass{
   insertCheckbox($wrapper,$curEle,idx){
     const [$container,dataObj]=createCheckboxHtmlObj(this,{$wrapper,$curEle,idx})
     createCheckboxInside(this,$curEle,$container,dataObj,idx)
+  }
+
+  insertFileInput($wrapper,$curEle,idx){
+    if(this.uploadOptions.thumbnail){
+      createGallery()
+    }
+    const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
+    createFileInside(this,$curEle,$container,dataObj,idx,this.uploadOptions)
   }
 
   insertPasswordInput($wrapper,$curEle,idx){

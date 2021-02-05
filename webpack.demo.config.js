@@ -3,7 +3,7 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'production',
@@ -85,7 +85,7 @@ module.exports = {
                   // 开启css中的图片打包功能
                   url: true,
                   importLoaders: 2,
-                  sourceMap: isDev,
+                  sourceMap: false,
                 },
               },
               // All the rules in postcss.config.js

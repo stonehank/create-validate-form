@@ -30,8 +30,8 @@ export default function createDateTimeInside(self,$curEle,$container,dataObj,idx
       self.elementData[idx].result=chooseDate
       showClearBtn()
     },
-    opened:() => { console.log('open') },
-    closed:() => { console.log('closed') }
+    opened:() => { },
+    closed:() => { }
   }
   if(type==='time'){
     params.datePanel=false
