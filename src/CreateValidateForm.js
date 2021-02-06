@@ -16,6 +16,7 @@ import createSelectInside from './insert/select/createSelectInside'
 import createTextareaInside from './insert/textarea/createTextareaInside'
 import createDateTimeInside from './insert/datetime/createDateTimeInside'
 import createFileInside from './insert/file/createFileInside'
+import createGallery from './insert/file/createGallery'
 
 
 class CreateValidateForm extends ValidateClass{
@@ -167,15 +168,7 @@ class CreateValidateForm extends ValidateClass{
 
   insertFileInput($wrapper,$curEle,idx){
     if(this.uploadOptions.thumbnail){
-      /* eslint-disable */
-      import(/* webpackChunkName: "jquery.blueimp-gallery" */ 'blueimp-gallery/js/jquery.blueimp-gallery')
-      import(/* webpackChunkName: "jquery.blueimp-gallery" */ 'blueimp-gallery/css/blueimp-gallery.css')
-      import(/* webpackChunkName: "createGallery" */ './insert/file/createGallery')
-        .then((data)=>{
-          let createGallery=data.default
-          createGallery()
-        })
-      /* eslint-disable */
+      createGallery()
     }
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
     createFileInside(this,$curEle,$container,dataObj,idx,this.uploadOptions)

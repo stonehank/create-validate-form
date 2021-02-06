@@ -46,8 +46,8 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin(),
     new ErrorOverlayPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[name].css',
+      filename: 'css/CreateValidateForm.css',
+      chunkFilename: 'css/CreateValidateForm.css',
     }),
   ].filter(Boolean),
   optimization: {
