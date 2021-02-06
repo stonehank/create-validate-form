@@ -20,6 +20,9 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
   },
+  externals: {
+    jquery: 'jQuery',
+  },
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new CleanWebpackPlugin(),
@@ -36,8 +39,8 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin(),
     new ErrorOverlayPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/CreateValidateForm.css',
-      chunkFilename: 'css/CreateValidateForm.css',
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].css',
     }),
   ].filter(Boolean),
   optimization: {

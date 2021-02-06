@@ -1,6 +1,6 @@
 {
   "name": "create-validate-form",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Create validate form without framework",
   "main": "dist/index.js",
   "scripts": {
@@ -21,13 +21,14 @@
     "blueimp-gallery": "^3.3.0",
     "dateformat": "^3.0.3",
     "dm-file-uploader": "^1.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "jquery-mask-plugin": "^1.14.16",
     "pepjs": "^0.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "clean-webpack-plugin": "^3.0.0",
