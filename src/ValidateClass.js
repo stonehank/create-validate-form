@@ -63,35 +63,65 @@ class CreateValidateForm {
   }
 
   validate_render(dataObj,index) {
-    let {$msgEle, $fieldEle, $labelEle} = dataObj
+    let {
+      $msgEle, $fieldEle, $labelEle,$groupLabel
+    } = dataObj
+    // $labelEle=$($labelEle)
+    // $fieldEle=$($fieldEle)
     let errorMsg = this.errorMsg[index]
     let isValid = this.isValidates[index]
     if (isValid === true) {
       if($fieldEle){
-        $fieldEle.removeClass('cvf-error')
-        if(this.showSuccess)$fieldEle.addClass('cvf-success')
+        removeClassFromEles($fieldEle,'cvf-error')
+        if(this.showSuccess){
+          addClassFromEles($fieldEle,'cvf-success')
+        }
       }
-      $labelEle.removeClass('cvf-text-error')
-      if(this.showSuccess)$labelEle.addClass('cvf-text-success')
+      removeClassFromEles($labelEle,'cvf-text-error')
+      removeClassFromEles($groupLabel,'cvf-text-error')
+      if(this.showSuccess){
+        addClassFromEles($labelEle,'cvf-text-success')
+        addClassFromEles($groupLabel,'cvf-text-success')
+      }
       $msgEle.text(null)
     } else if (isValid === false) {
       if($fieldEle){
-        $fieldEle.removeClass('cvf-success')
-        $fieldEle.addClass('cvf-error')
+        removeClassFromEles($fieldEle,'cvf-success')
+        addClassFromEles($fieldEle,'cvf-error')
       }
-      $labelEle.removeClass('cvf-text-success')
-      $labelEle.addClass('cvf-text-error')
+      removeClassFromEles($labelEle,'cvf-text-success')
+      removeClassFromEles($groupLabel,'cvf-text-success')
+      addClassFromEles($labelEle,'cvf-text-error')
+      addClassFromEles($groupLabel,'cvf-text-error')
       $msgEle.text(errorMsg)
     }else{
       if($fieldEle){
-        $fieldEle.removeClass('cvf-success')
-        $fieldEle.removeClass('cvf-error')
+        removeClassFromEles($fieldEle,'cvf-success')
+        removeClassFromEles($fieldEle,'cvf-error')
       }
-      $labelEle.removeClass('cvf-text-success')
-      $labelEle.removeClass('cvf-text-error')
+      removeClassFromEles($labelEle,'cvf-text-success')
+      removeClassFromEles($groupLabel,'cvf-text-success')
+      removeClassFromEles($labelEle,'cvf-text-error')
+      removeClassFromEles($groupLabel,'cvf-text-error')
       $msgEle.text('')
     }
   }
+}
+
+function removeClassFromEles($ele,clsName){
+  if($ele==null)return
+  $ele=$($ele)
+  $ele.each((idx,ele) => {
+    $(ele).removeClass(clsName)
+  })
+}
+
+function addClassFromEles($ele,clsName){
+  if($ele==null)return
+  $ele=$($ele)
+  $ele.each((idx,ele) => {
+    $(ele).addClass(clsName)
+  })
 }
 
 export default CreateValidateForm

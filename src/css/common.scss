@@ -21,7 +21,7 @@ $text-opposite:#fff;
   .cvf-filedset-wrapper{
     text-align: left;
     position: relative;
-    margin-top: 12px;
+    margin-top: 6px;
     .cvf-text-success{
       color: $success !important;
     }
@@ -239,6 +239,72 @@ $text-opposite:#fff;
       }
     }
 
+  }
+  .radio-group-label{
+    padding: 2px 0 2px 8px;
+    display: block;
+    margin-bottom: 4px;
+    color: $text-primary;
+    font-size: 18px;
+  }
+  .cvf-radio-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px 8px;
+    &.radio-vertical{
+      flex-flow:column;
+      align-items: flex-start;
+      .cvf-radio-selector-container{
+        margin:0 2px 4px 0;;
+      }
+    }
+    .cvf-radio-selector-container{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin:0 8px 2px 0;
+      .cvf-radio-selector-box{
+        position: relative;
+        width: 26px;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 8px;
+        border: 2px solid $border-color;
+        cursor:pointer;
+        transition:background .3s linear;
+        .radio-ticker{
+          position: absolute;
+          left:50%;
+          top:50%;
+          width:0;
+          height:0;
+          transition:.3s;
+          transform:translate(-50%, -50%);
+          border-radius:50%;
+          background: #555;
+        }
+        .cvf-radio-selector-tick{
+          width: 18px;
+          height: 18px;
+        }
+      }
+      .cvf-radio-label{
+        color:$text-primary;
+        font-weight:500;
+        font-size:18px;
+        cursor:pointer;
+      }
+      @media (hover:hover){
+        &:hover .cvf-radio-selector-box{
+          background:$border-hover-light-color;
+        }
+      }
+    }
   }
   .cvf-eye-icon{
     display:flex;

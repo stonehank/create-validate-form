@@ -11,7 +11,7 @@ $(document).ready(() => {
   new CreateValidateForm({
     ele:'#custom-form',
     material:false,
-    showSuccess:false,
+    showSuccess:true,
     uploadOptions:{
       noBackend:true,
       maxFiles:0,
@@ -60,7 +60,10 @@ $(document).ready(() => {
       null,
       verifyRules.date(allowFrom,allowTo),
       [(v) => !!v && v.length>0 || 'Need provide some file'],
-      [(v) => !!v || 'Muse accept this'],
+      [(v) => !!v || 'Must accept this'],
+      [(v) => (v!=null && v!=='') || 'Must choose a option'],
+      [(v) => v==='b' || 'Must choose B'],
+      [(v) => !!v || 'Must choose '],
     ],
     allowedDate:[allowFrom,allowTo],
     afterValid:(ev,data) => {

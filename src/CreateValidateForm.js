@@ -17,6 +17,8 @@ import createTextareaInside from './insert/textarea/createTextareaInside'
 import createDateTimeInside from './insert/datetime/createDateTimeInside'
 import createFileInside from './insert/file/createFileInside'
 import createGallery from './insert/file/createGallery'
+import createRadioHtmlObj from './insert/radio/createRadioHtmlObj'
+import createRadioInside from './insert/radio/createRadionside'
 
 
 class CreateValidateForm extends ValidateClass{
@@ -109,6 +111,8 @@ class CreateValidateForm extends ValidateClass{
           this.insertPasswordInput($wrapper,$curEle,idx)
         }else if(type==='checkbox'){
           this.insertCheckbox($wrapper,$curEle,idx)
+        }else if(type==='radio'){
+          this.insertRadio($wrapper,$curEle,idx)
         }else if(type==='date'){
           this.insertDateTime($wrapper,$curEle,idx,'date')
         }else if(type==='time'){
@@ -126,6 +130,10 @@ class CreateValidateForm extends ValidateClass{
         this.insertTextarea($wrapper,$curEle,idx)
         break
       default:
+        if($curEle.attr('data-cvf-type')==='radio'){
+          this.insertRadio($wrapper,$curEle,idx,true)
+        }
+        break
     }
   }
 
@@ -164,6 +172,13 @@ class CreateValidateForm extends ValidateClass{
   insertCheckbox($wrapper,$curEle,idx){
     const [$container,dataObj]=createCheckboxHtmlObj(this,{$wrapper,$curEle,idx})
     createCheckboxInside(this,$curEle,$container,dataObj,idx)
+  }
+
+  insertRadio($wrapper,$curEle,idx,isGroup=false){
+    const [$container,dataObj]=createRadioHtmlObj(this,{
+      $wrapper,$curEle,idx,isGroup
+    })
+    createRadioInside(this,$curEle,$container,dataObj,idx)
   }
 
   insertFileInput($wrapper,$curEle,idx){
@@ -234,7 +249,7 @@ class CreateValidateForm extends ValidateClass{
     // console.log(result,$labelEle)
     if (!result && !hasPlaceholder) {
       if($legendEle){
-        $labelEle.css({top: 18, fontSize: 16})
+        $labelEle.css({top: '50%', fontSize: 16})
         $legendEle.css({width: 0})
       }
     }

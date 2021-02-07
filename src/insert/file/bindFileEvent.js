@@ -128,6 +128,10 @@ export default function bindSelectEvent(self,{
         fileNameList.splice(index,1)
         if(showThumbnail)$thumbnail.remove()
         $uploadFileTag.remove()
+        setTimeout(() => {
+          self._elementFocus(idx)
+          self._elementBlur(idx)
+        },200)
       })
       if(showThumbnail){
         $closeBtn.on('click',function(ev){
@@ -138,6 +142,10 @@ export default function bindSelectEvent(self,{
           fileNameList.splice(index,1)
           $thumbnail.remove()
           $uploadFileTag.remove()
+          setTimeout(() => {
+            self._elementFocus(idx)
+            self._elementBlur(idx)
+          },200)
         })
         $thumbnail.append($closeBtn)
         $thumbnail.css(options.thumbnail)
