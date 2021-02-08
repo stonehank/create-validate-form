@@ -10,13 +10,13 @@
 - [x] datetime
 - [x] select(multiple)
 - [x] file(multiple)
-- [ ] ratio
+- [x] ratio
 - [ ] range
 
 ### 案例
 
 ```html
- <form id="custom-form" style="max-width:800px;margin:auto;">
+    <form id="custom-form" style="max-width:800px;margin:auto;">
         <div class="col-sm-10 col-md-5 col-lg-4 col-xl-4">
             <input value="initial value" data-cvf  name="name"  placeholder="Enter your name" data-cvf-label="Name" />
         </div>
@@ -49,6 +49,17 @@
                data-cvf-from="2022-1-1" data-cvf-to="2017-4-6" data-cvf-initDate="2022-1-1" data-cvf-initView="day"/>
         <input data-cvf class="col-sm-10 col-lg-12"  type="file"  name="file upload" placeholder="" data-cvf-label="File Upload"  />
         <input data-cvf class="col-sm-10 col-lg-12"  type="checkbox" checked value="5" name="include email" placeholder="" data-cvf-label="Include email"  />
+        <div data-cvf data-cvf-type="radio" class="col-sm-10 col-lg-6" data-cvf-group-name="gender" data-cvf-group-label="Choose your gender">
+            <input type="radio"  value="0" name="gender" data-cvf-label="Female"  />
+            <input type="radio"  value="1" name="gender" data-cvf-label="Male"  />
+        </div>
+        <div data-cvf data-cvf-type="radio" data-cvf-vertical class="col-sm-10 col-lg-6" data-cvf-group-name="answer" data-cvf-group-label="Choose answer B">
+            <input type="radio"  value="a" data-cvf-label="A"  />
+            <input type="radio"  value="b" data-cvf-label="B"  />
+            <input type="radio"  value="c" data-cvf-label="C"  />
+            <input type="radio"  value="d" data-cvf-label="D"  />
+        </div>
+        <input data-cvf class="col-sm-10 col-lg-12" type="radio"  value="xxx" name="custom" data-cvf-label="Some Value"  />
         <div class="col-sm-10 col-lg-12" style="text-align: center;">
             <button data-cvf  type="submit" class="form-submit-btn" data-cvf-submit="1" >Submit</button>
         </div>
@@ -63,9 +74,9 @@ $(document).ready(() => {
   new CreateValidateForm({
     ele:'#custom-form',
     material:false,
-    showSuccess:false,
+    showSuccess:true,
     uploadOptions:{
-      noBackend:true, // This option is easy for debug
+      noBackend:true,
       maxFiles:0,
       dnd: true,
       multiple: true,
@@ -112,7 +123,10 @@ $(document).ready(() => {
       null,
       verifyRules.date(allowFrom,allowTo),
       [(v) => !!v && v.length>0 || 'Need provide some file'],
-      [(v) => !!v || 'Muse accept this'],
+      [(v) => !!v || 'Must accept this'],
+      [(v) => (v!=null && v!=='') || 'Must choose a option'],
+      [(v) => v==='b' || 'Must choose B'],
+      [(v) => !!v || 'Must choose '],
     ],
     allowedDate:[allowFrom,allowTo],
     afterValid:(ev,data) => {
