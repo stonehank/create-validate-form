@@ -22,7 +22,7 @@ export default function createSelectInside(self,$curEle,$container,dataObj,idx){
     $selectOptCont.append($selectOptItem)
   }
   $selectWrapper.append($selectResult)
-  $selectWrapper.append($selectOptCont)
+  $('body').append($selectOptCont)
 
   for(let i=0; i<value.length; i++){
     optEles[i].text(name[i])

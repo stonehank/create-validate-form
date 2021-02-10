@@ -42,10 +42,11 @@ export default function bindSelectEvent(self,{
       })
     })
   }
-  $selectResult.on('focus',() => {
-    // ev.stopPropagation()
+
+  $selectResult.on('focus',(ev) => {
+    ev.stopPropagation()
     self.dirty[idx]=true
-    selectShowDropdown(self,{idx,$selectOptCont})
+    selectShowDropdown(self,{idx,$selectOptCont,$selectResult})
   })
   $selectResult.on('blur',() => {
     // ev.stopPropagation()

@@ -118,49 +118,10 @@ $text-opposite:#fff;
         display: block;
         height: 38px;
       }
-      .cvf-select-option-container{
-        transform: translateY(-50px);
-        opacity: 0;
-        position: absolute;
-        width: 100%;
-        max-width: 300px;
-        top: 100%;
-        left: 0;
-        z-index: -1;
-        visibility: hidden;
-        background: #fff;
-        border:1px solid $border-color;
-        border-radius:0 0 4px 4px;
-        transition:.18s;
-        max-height: 300px;
-        overflow-y: auto;
-        .cvf-select-option-item{
-          cursor:pointer;
-          border-bottom:1px solid $border-color;
-          padding: 12px 6px;
-          text-align:center;
-          transition:.5s;
-          @media (hover: hover){
-            &:not(.cvf-disabled):hover{
-              background:$border-color;
-            }
-          }
-        }
-      }
-      .cvf-show-select{
-        transform:translateY(0);
-        opacity:1;
-        visibility: visible;
-        z-index:99;
-      }
-      .cvf-select-active{
-        background:$border-color;
-      }
-    }
-    .cvf-disabled{
-      color:$text-secondary;
     }
   }
+
+
 
   .cvf-material-ui{
     border: none;
@@ -423,6 +384,7 @@ $text-opposite:#fff;
     }
   }
 }
+@import './select-container';
 @import './auto-height-textarea';
 @import './datepicker';
 
