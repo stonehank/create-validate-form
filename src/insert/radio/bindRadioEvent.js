@@ -1,6 +1,6 @@
 export default function bindRadioEvent(self,$selectorContainer,dataObj){
-  let {idx,isDisabledList}=dataObj
-  if(dataObj.isDisabled){
+  let {idx,isDisabledList,isDisabled}=dataObj
+  if(isDisabled){
     return
   }
   $selectorContainer.on('click',function(){

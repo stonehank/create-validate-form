@@ -13,11 +13,13 @@ export default function createRadioHtmlObj(self,{
   let labelList=[]
   let valueList=[]
   let isDisabledList=[]
+  let isDisabled=null
 
   if(isGroup){
     let $radios=$curEle.find('input[type="radio"]')
     let radioGroupLabel=$curEle.attr('data-cvf-group-label')
     radioGroupName=$curEle.attr('data-cvf-group-name')
+    isDisabled=$curEle.attr('data-cvf-disabled')!=null
     vertical=$curEle.attr('data-cvf-vertical')!=null
 
     if(radioGroupLabel!=null){
@@ -36,6 +38,7 @@ export default function createRadioHtmlObj(self,{
     }
   }else{
     initValue=$curEle.is(':checked') ? $curEle.attr('value') : initValue
+    isDisabled=$curEle.attr('disabled')!=null
     isDisabledList=[$curEle.attr('disabled')!=null]
     valueList.push($curEle.attr('value'))
     radioGroupName=$curEle.attr('name')
@@ -62,7 +65,8 @@ export default function createRadioHtmlObj(self,{
     textShow:null,
     valueList,
     $groupLabel,
-    isDisabledList
+    isDisabledList,
+    isDisabled
   }
   self.elementData[idx] =dataObj
   return [$container,dataObj]

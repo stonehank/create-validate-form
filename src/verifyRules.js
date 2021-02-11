@@ -86,6 +86,13 @@ const verifyRules={
   singleSelect:[
     commonValidate.required('Single Select')
   ],
+  multiSelect:[
+    commonValidate.required('Multiple Select')
+  ],
+  disabled:[
+    null
+    // commonValidate.required('Disabled')
+  ],
   date:(from,to) => [
     commonValidate.date(),
     commonValidate.allowDate(from,to)

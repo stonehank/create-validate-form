@@ -92,9 +92,15 @@
             <input type="radio"  value="c" data-cvf-label="C" disabled />
             <input type="radio"  value="d" data-cvf-label="D"  />
         </div>
-        <input data-cvf class="col-4" type="radio"  value="xxx" name="custom" data-cvf-label="Some Value"  />
-        <input data-cvf class="col-4" type="radio" disabled  value="xxx" name="custom" data-cvf-label="Some Value(disabled)"  />
-        <div class="col-sm-10 col-lg-12" style="text-align: center;">
+        <div data-cvf data-cvf-type="radio" data-cvf-vertical data-cvf-disabled class="col-sm-10 col-lg-6" data-cvf-group-name="answer" data-cvf-group-label="Choose answer B(All disabled)">
+            <input type="radio"  value="a" data-cvf-label="A" disabled />
+            <input type="radio"  value="b" data-cvf-label="B"  />
+            <input type="radio"  value="c" data-cvf-label="C" disabled />
+            <input type="radio"  value="d" data-cvf-label="D"  />
+        </div>
+        <input data-cvf class="col-sm-10 col-lg-6" type="radio"  value="xxx" name="custom" data-cvf-label="Some Value"  />
+        <input data-cvf class="col-sm-10 col-lg-6" type="radio" disabled  value="xxx" name="custom" data-cvf-label="Some Value(disabled)"  />
+        <div class="col-sm-10 col-lg-6" style="text-align: center;">
             <button data-cvf  type="submit" class="form-submit-btn" data-cvf-submit="1" >Submit</button>
         </div>
     </form>

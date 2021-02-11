@@ -252,7 +252,7 @@ class CreateValidateForm extends ValidateClass{
     // console.log(result,$labelEle)
     if (!result && !hasPlaceholder) {
       if($legendEle){
-        $labelEle.css({top: 16, fontSize: 16})
+        $labelEle.css({top: 14, fontSize: 16})
         $legendEle.css({width: 0})
       }
     }

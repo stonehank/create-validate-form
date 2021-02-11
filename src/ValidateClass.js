@@ -64,13 +64,13 @@ class CreateValidateForm {
 
   validate_render(dataObj,index) {
     let {
-      $msgEle, $fieldEle, $labelEle,$groupLabel
+      $msgEle, $fieldEle, $labelEle,$groupLabel,isDisabled
     } = dataObj
     // $labelEle=$($labelEle)
     // $fieldEle=$($fieldEle)
     let errorMsg = this.errorMsg[index]
     let isValid = this.isValidates[index]
-    if (isValid === true) {
+    if (isValid === true && !isDisabled) {
       if($fieldEle){
         removeClassFromEles($fieldEle,'cvf-error')
         if(this.showSuccess){
@@ -84,7 +84,7 @@ class CreateValidateForm {
         addClassFromEles($groupLabel,'cvf-text-success')
       }
       $msgEle.text(null)
-    } else if (isValid === false) {
+    } else if (isValid === false && !isDisabled) {
       if($fieldEle){
         removeClassFromEles($fieldEle,'cvf-success')
         addClassFromEles($fieldEle,'cvf-error')
