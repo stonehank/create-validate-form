@@ -12,6 +12,7 @@ export default function createRadioHtmlObj(self,{
   let labelEleList=[]
   let labelList=[]
   let valueList=[]
+  let isDisabledList=[]
 
   if(isGroup){
     let $radios=$curEle.find('input[type="radio"]')
@@ -25,6 +26,7 @@ export default function createRadioHtmlObj(self,{
     }
     for(let i=0; i<$radios.length; i++){
       let $curInput=$radios.eq(i)
+      isDisabledList[i]=$curInput.attr('disabled')!=null
       initValue=$curInput.is(':checked') ? $curInput.attr('value') : initValue
       valueList.push($curInput.attr('value'))
       radioGroupName=radioGroupName==null ? $curInput.attr('name') : radioGroupName
@@ -34,6 +36,7 @@ export default function createRadioHtmlObj(self,{
     }
   }else{
     initValue=$curEle.is(':checked') ? $curEle.attr('value') : initValue
+    isDisabledList=[$curEle.attr('disabled')!=null]
     valueList.push($curEle.attr('value'))
     radioGroupName=$curEle.attr('name')
     let [$labelEle,label]=renderRadioInput($curEle)
@@ -58,9 +61,9 @@ export default function createRadioHtmlObj(self,{
     result:initValue,
     textShow:null,
     valueList,
-    $groupLabel
+    $groupLabel,
+    isDisabledList
   }
-  console.log(valueList)
   self.elementData[idx] =dataObj
   return [$container,dataObj]
 }

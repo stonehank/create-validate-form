@@ -9,14 +9,20 @@ export default function bindSelectEvent(self,{
     console.warn('For convenient, using no-backend mode, anything you upload will response a random image #_#')
     options.convertResponseToPath=() => `https://picsum.photos/id/${Math.ceil(Math.random()*200)}/200/200`
   }
+  if (typeof options.convertResponseToPath !== 'function') {
+    throw new Error('Must provide <convertResponseToPath> Function, which parameter are [id, data], and need to return the real path<String|Array>')
+  }
+  setTimeout(() => {
+    self._elementBlur(idx)
+  },0)
+  if(dataObj.isDisabled){
+    return
+  }
   let defaultThumbnailOpt={
     width: 48,
     height: 48,
     margin: 4,
     padding: 4,
-  }
-  if (typeof options.convertResponseToPath !== 'function') {
-    throw new Error('Must provide <convertResponseToPath> Function, which parameter are [id, data], and need to return the real path<String|Array>')
   }
   if(options.thumbnail) {
     if(Object.prototype.toString.call(options.thumbnail)!=='[object Object]'){
@@ -25,13 +31,10 @@ export default function bindSelectEvent(self,{
       options.thumbnail=Object.assign(defaultThumbnailOpt,options.thumbnail)
     }
   }
-
   let fileNameList=[]
   $label.on('click', () => setTimeout(() => self._elementFocus(idx),0))
   $label.on('mouseleave', () => setTimeout(() => self._elementBlur(idx),0))
-  setTimeout(() => {
-    self._elementBlur(idx)
-  },0)
+
   // window.r=() => { self._elementBlur(idx) }
   $curEle.dmUploader({
     url: options.url,

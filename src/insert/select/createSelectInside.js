@@ -35,11 +35,8 @@ export default function createSelectInside(self,$curEle,$container,dataObj,idx){
   }
   dataObj.reset()
 
-  self._elementBlur(idx)
   $container.append($selectWrapper)
 
-
-  // $selectResult.blur()
   let {showClearBtn,hideClearBtn}=self.addClearBtn($selectWrapper,$selectResult,dataObj)
   bindSelectEvent(self,{
     value,name,optEles,dataObj,$selectResult,$selectOptCont,isMulti,idx,showClearBtn,hideClearBtn

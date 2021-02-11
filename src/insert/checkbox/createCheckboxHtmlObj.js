@@ -2,6 +2,7 @@ import $ from 'jquery'
 
 export default function createCheckboxHtmlObj(self,{$wrapper,$curEle,idx}){
   let label = $curEle.attr('data-cvf-label')
+  let isDisabled=$curEle.attr('disabled')!=null
   let $container = $('<div class="cvf-checkbox-wrapper"></div>')
 
   let $errorMsgEle = $('<div class="error-msg"></div>')
@@ -26,6 +27,7 @@ export default function createCheckboxHtmlObj(self,{$wrapper,$curEle,idx}){
     hasPlaceholder:false,
     result:initValue,
     textShow:null,
+    isDisabled
   }
   self.elementData[idx] =dataObj
   return [$container,dataObj]

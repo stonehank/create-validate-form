@@ -139,6 +139,12 @@ class CreateValidateForm extends ValidateClass{
 
 
   bindValidateEvent($curEle,dataObj,idx,showClearBtn,hideClearBtn){
+    setTimeout(() => {
+      this._elementBlur(idx)
+    },0)
+    if(dataObj.isDisabled){
+      return
+    }
     $curEle.bind('change input paste', () => {
       setTimeout(() => {
         let val=$curEle.val()
@@ -154,9 +160,6 @@ class CreateValidateForm extends ValidateClass{
     })
     $curEle.on('focus', () => setTimeout(() => this._elementFocus(idx),0))
     $curEle.on('blur', () => setTimeout(() => this._elementBlur(idx),0))
-    setTimeout(() => {
-      this._elementBlur(idx)
-    },0)
   }
 
   insertDateTime($wrapper,$curEle,idx,type){
@@ -249,7 +252,7 @@ class CreateValidateForm extends ValidateClass{
     // console.log(result,$labelEle)
     if (!result && !hasPlaceholder) {
       if($legendEle){
-        $labelEle.css({top: '50%', fontSize: 16})
+        $labelEle.css({top: 16, fontSize: 16})
         $legendEle.css({width: 0})
       }
     }

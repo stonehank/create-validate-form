@@ -36,6 +36,7 @@ $text-opposite:#fff;
       justify-content: center;
       align-content: center;
       .cvf-valid-field{
+        background:#fff;
         border: none;
         padding: 10px 20px 4px 8px;
         outline: none;
@@ -381,6 +382,14 @@ $text-opposite:#fff;
         max-height:100%;
         max-width:100%;
       }
+    }
+  }
+  .cvf-disabled{
+    background: #c2c2c2 !important;
+    touch-action: none;
+    & > .cvf-valid-field{
+      background:transparent !important;
+      touch-action:none;
     }
   }
 }

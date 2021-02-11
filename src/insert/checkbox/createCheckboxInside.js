@@ -3,7 +3,7 @@ import bindCheckboxEvent from './bindCheckboxEvent'
 
 export default function createCheckboxInside(self,$curEle,$container,dataObj,idx){
   $curEle.addClass('cvf-valid-field')
-  let {$labelEle}=dataObj
+  let {$labelEle,isDisabled}=dataObj
   let $selectorContainer = $('<div class="cvf-checkbox-selector-container"></div>')
   let $selectorBox=$('<div class="cvf-checkbox-selector-box"></div>')
   let $selectorTick=$(
@@ -24,9 +24,12 @@ export default function createCheckboxInside(self,$curEle,$container,dataObj,idx
     $selectorTick.removeClass('cvf-checkbox-selector-tick')
     dataObj.result=false
   }
-  bindCheckboxEvent(self,$selectorContainer,$selectorTick,dataObj,idx)
-
   if(dataObj.result){
     $selectorContainer.click()
   }
+  if(isDisabled){
+    $selectorBox.addClass('cvf-disabled')
+    return
+  }
+  bindCheckboxEvent(self,$selectorContainer,$selectorTick,dataObj,idx)
 }

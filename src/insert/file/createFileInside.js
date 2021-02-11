@@ -7,7 +7,6 @@ export default function createFileInside(self, $curEle, $container, dataObj, idx
     eleID=`file-upload-${idx}`
     $curEle.attr('id',eleID)
   }
-
   let $label=$(`<label class="cvf-upload-label" for="${eleID}"></label>`)
   let $fileThumbnail=$('<div class="cvf-upload-thumbnail-wrapper"></div>')
   $label.addClass('cvf-valid-field d-flex flex-wrap')

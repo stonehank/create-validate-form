@@ -3,7 +3,7 @@ import $ from 'jquery'
 export default function createTextFieldHtmlObj(self,{$wrapper,$curEle,idx}){
   let label = $curEle.attr('data-cvf-label')
   let forceMaterial=$curEle.attr('data-cvf-material')
-
+  let isDisabled=$curEle.attr('disabled')!=null
   let style=self.material
   if(forceMaterial==='true')style=true
   else if(forceMaterial==='false')style=false
@@ -14,6 +14,7 @@ export default function createTextFieldHtmlObj(self,{$wrapper,$curEle,idx}){
   let $labelEle = $('<span class="cvf-label-text"></span>')
   let hasPlaceholder = !!$curEle.attr('placeholder')
 
+  if(isDisabled)$container.addClass('cvf-disabled')
   if (style) $fieldEle.addClass('cvf-material-ui')
   else $fieldEle.addClass('cvf-bootstrap-ui')
   if (!label) label = ''
@@ -40,6 +41,7 @@ export default function createTextFieldHtmlObj(self,{$wrapper,$curEle,idx}){
     hasPlaceholder,
     result:initValue,
     textShow:null,
+    isDisabled
   }
   self.elementData[idx] =dataObj
   return [$container,dataObj]

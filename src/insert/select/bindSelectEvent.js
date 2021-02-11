@@ -5,6 +5,12 @@ import selectChoose from './event/selectChoose'
 export default function bindSelectEvent(self,{
   value,name,optEles,dataObj,$selectResult,$selectOptCont,isMulti,idx,showClearBtn,hideClearBtn
 }){
+  setTimeout(() => {
+    self._elementBlur(idx)
+  },0)
+  if(dataObj.isDisabled){
+    return
+  }
   $selectOptCont.on('pointerdown',false)
   for(let i=0; i<value.length; i++){
     optEles[i].text(name[i])
@@ -52,14 +58,4 @@ export default function bindSelectEvent(self,{
     // ev.stopPropagation()
     selectHideDropdown(self,idx)
   })
-
-  // $selectResult.on('click',(ev) => {
-  //   ev.stopPropagation()
-  //   self.dirty[idx]=true
-  //   if($selectOptCont.hasClass('cvf-show-select')){
-  //     selectHideDropdown(self,idx)
-  //   }else{
-  //     selectShowDropdown(self,{idx,$selectOptCont})
-  //   }
-  // })
 }
