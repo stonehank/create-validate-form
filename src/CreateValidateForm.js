@@ -51,7 +51,7 @@ class CreateValidateForm extends ValidateClass{
     this.otpOptions=otpOptions
     this.uploadOptions=uploadOptions
     this.submitBtn=$ele.find('[data-cvf-submit]')
-    $ele.addClass('row justify-content-center cvf-from')
+    $ele.addClass('row cvf-from')
 
     this._elementFocus = this._elementFocus.bind(this)
     this._elementBlur= this._elementBlur.bind(this)
