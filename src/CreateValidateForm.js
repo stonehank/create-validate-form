@@ -27,6 +27,7 @@ class CreateValidateForm extends ValidateClass{
     rules = [],
     material = true,
     showSuccess = true,
+    otpOptions={},
     uploadOptions={},
     // eslint-disable-next-line  no-unused-vars
     afterValid = (data) => {
@@ -47,6 +48,7 @@ class CreateValidateForm extends ValidateClass{
     this.afterValid = afterValid
     this.showDropDownIdx=null
     this.showDropDownEle=null
+    this.otpOptions=otpOptions
     this.uploadOptions=uploadOptions
     this.submitBtn=$ele.find('[data-cvf-submit]')
     $ele.addClass('row justify-content-center cvf-from')
@@ -164,24 +166,36 @@ class CreateValidateForm extends ValidateClass{
 
   insertDateTime($wrapper,$curEle,idx,type){
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
-    createDateTimeInside(this,$curEle,$container,dataObj,idx,type)
+    createDateTimeInside(this,{
+      $curEle,
+      $container,
+      dataObj,
+      idx,
+      type,
+    })
   }
 
   insertTextarea($wrapper,$curEle,idx){
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
-    createTextareaInside(this,$curEle,$container,dataObj,idx)
+    createTextareaInside(this,{
+      $curEle,$container,dataObj,idx
+    })
   }
 
   insertCheckbox($wrapper,$curEle,idx){
     const [$container,dataObj]=createCheckboxHtmlObj(this,{$wrapper,$curEle,idx})
-    createCheckboxInside(this,$curEle,$container,dataObj,idx)
+    createCheckboxInside(this,{
+      $curEle,$container,dataObj,idx
+    })
   }
 
   insertRadio($wrapper,$curEle,idx,isGroup=false){
     const [$container,dataObj]=createRadioHtmlObj(this,{
       $wrapper,$curEle,idx,isGroup
     })
-    createRadioInside(this,$curEle,$container,dataObj,idx)
+    createRadioInside(this,{
+      $curEle,$container,dataObj,idx
+    })
   }
 
   insertFileInput($wrapper,$curEle,idx){
@@ -189,22 +203,37 @@ class CreateValidateForm extends ValidateClass{
       createGallery()
     }
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
-    createFileInside(this,$curEle,$container,dataObj,idx,this.uploadOptions)
+    createFileInside(this,{
+      $curEle,$container,dataObj,idx,uploadOptions:this.uploadOptions
+    })
   }
 
   insertPasswordInput($wrapper,$curEle,idx){
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
-    createPasswordInputInside(this,$curEle,$container,dataObj,idx)
+    createPasswordInputInside(this,{
+      $curEle,$container,dataObj,idx
+    })
   }
 
   insertTextInput($wrapper,$curEle,idx){
-    const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
-    createInputInside(this,$curEle,$container,dataObj,idx)
+    let curOtpOptions=null
+    let otpName=$curEle.attr('data-cvf-otp-name')
+    if(otpName!=null){
+      curOtpOptions=this.otpOptions[otpName]
+    }
+    const [$container,dataObj]=createTextFieldHtmlObj(this,{
+      $wrapper,$curEle,idx,otpOptions:curOtpOptions
+    })
+    createInputInside(this,{
+      $curEle,$container,dataObj,idx,otpOptions:curOtpOptions
+    })
   }
 
   insertSelect($wrapper,$curEle,idx){
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
-    createSelectInside(this,$curEle,$container,dataObj,idx)
+    createSelectInside(this,{
+      $curEle,$container,dataObj,idx
+    })
   }
 
 

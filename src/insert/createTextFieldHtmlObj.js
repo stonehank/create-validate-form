@@ -1,6 +1,8 @@
 import $ from 'jquery'
 
-export default function createTextFieldHtmlObj(self,{$wrapper,$curEle,idx}){
+export default function createTextFieldHtmlObj(self,{
+  $wrapper,$curEle,idx,otpOptions
+}){
   let label = $curEle.attr('data-cvf-label')
   let forceMaterial=$curEle.attr('data-cvf-material')
   let isDisabled=$curEle.attr('disabled')!=null
@@ -24,6 +26,22 @@ export default function createTextFieldHtmlObj(self,{$wrapper,$curEle,idx}){
   $fieldEle.append($labelEle)
   $container.append($fieldEle)
   $wrapper.append($container)
+  if(otpOptions){
+    /*
+      otp1:{
+        otpCount:4,
+        sendAPI:'',
+        verifyAPI:''
+      }
+    */
+    let $otpWrapper=$('<div class="cvf-otp-wrapper"></div>')
+
+    for(let i=0; i<otpOptions.otpCount; i++){
+      let $otpInput=$('<input type=text class="cvf-otp-input" />')
+      $otpWrapper.append($otpInput)
+    }
+    $wrapper.append($otpWrapper)
+  }
   $wrapper.append($errorMsgEle)
   let textW = $labelEle.outerWidth(true)
   $legendEle.css({width: textW})

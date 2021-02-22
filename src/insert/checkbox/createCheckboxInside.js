@@ -1,7 +1,9 @@
 import $ from 'jquery'
 import bindCheckboxEvent from './bindCheckboxEvent'
 
-export default function createCheckboxInside(self,$curEle,$container,dataObj,idx){
+export default function createCheckboxInside(self,{
+  $curEle,$container,dataObj,idx
+}={}){
   $curEle.addClass('cvf-valid-field')
   let {$labelEle,isDisabled}=dataObj
   let $selectorContainer = $('<div class="cvf-checkbox-selector-container"></div>')

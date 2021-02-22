@@ -2,7 +2,9 @@ import $ from 'jquery'
 import bindSelectEvent from './bindSelectEvent'
 import copyAttr from '../../init/copyAttr'
 
-export default function createSelectInside(self,$curEle,$container,dataObj,idx){
+export default function createSelectInside(self,{
+  $curEle,$container,dataObj,idx
+}={}){
   let $options=$curEle.children()
   let value=[]
   let name=[]

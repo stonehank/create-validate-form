@@ -1,6 +1,8 @@
 import bindFileEvent from './bindFileEvent'
 
-export default function createFileInside(self, $curEle, $container, dataObj, idx,uploadOptions){
+export default function createFileInside(self,{
+  $curEle, $container, dataObj, idx,uploadOptions
+}={}){
   $curEle.attr('hidden',true)
   let eleID=$curEle.attr('id')
   if(!eleID){

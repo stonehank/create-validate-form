@@ -10,11 +10,6 @@ $text-blur:rgba(0,0,0,0.16);
 $text-opposite:#fff;
 
 .cvf-from{
-  *{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-  }
   p{
     margin-bottom:4px;
   }
@@ -396,6 +391,7 @@ $text-opposite:#fff;
 @import './select-container';
 @import './auto-height-textarea';
 @import './datepicker';
+@import './otp';
 
 
 

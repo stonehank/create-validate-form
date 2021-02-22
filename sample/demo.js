@@ -12,6 +12,13 @@ $(document).ready(() => {
     ele:'#custom-form',
     material:false,
     showSuccess:true,
+    otpOptions:{
+      otp1:{
+        otpCount:4,
+        sendAPI:'',
+        verifyAPI:''
+      }
+    },
     uploadOptions:{
       noBackend:true,
       maxFiles:0,

@@ -2,7 +2,9 @@ import $ from 'jquery'
 import bindRadioEvent from './bindRadioEvent'
 
 
-export default function createRadioInside(self,$curEle,$container,dataObj,idx){
+export default function createRadioInside(self,{
+  $curEle,$container,dataObj,idx
+}={}){
   let {$labelEle,isDisabledList}=dataObj
   let tickerList=[]
   for(let i=0; i<$labelEle.length; i++){
