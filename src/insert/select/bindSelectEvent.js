@@ -125,6 +125,10 @@ export default function bindSelectEvent(self,{
 
   function render(){
     $selectOptCont.html('')
+    if(curValue.length===0){
+      $selectOptCont.append($('<div class="cvf-select-option-item cvf-disabled">No Result</div>'))
+      return
+    }
     for(let i=0; i<curValue.length; i++){
       let disabledCls='cvf-disabled'
       let $selectOptItem=$(`<div class="cvf-select-option-item">${curName[i]}</div>`)
