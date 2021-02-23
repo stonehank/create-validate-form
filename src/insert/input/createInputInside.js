@@ -15,10 +15,6 @@ export default function createInputInside(self,{
     $container.append($otpBtn)
   }
   if(dataObj.result)self.dirty[idx]=true
-  dataObj.reset=() => {
-    $curEle.val('')
-    dataObj.result=null
-  }
   let {showClearBtn,hideClearBtn}=self.addClearBtn($container,$curEle,dataObj)
   self.bindValidateEvent($curEle,dataObj,idx,showClearBtn,hideClearBtn)
 }

@@ -60,7 +60,7 @@ class CreateValidateForm extends ValidateClass{
       this.elementData.forEach((dataObj,index) => {
         this.isValidates=[]
         this.dirty=[]
-        console.log(dataObj)
+        // console.log(dataObj)
         dataObj.reset()
         this._elementBlur(index)
         this.validate_render(dataObj,index)
@@ -142,6 +142,12 @@ class CreateValidateForm extends ValidateClass{
 
 
   bindValidateEvent($curEle,dataObj,idx,showClearBtn,hideClearBtn){
+    dataObj.reset=() => {
+      $curEle.val('')
+      dataObj.result=null
+      dataObj.dirty=false
+      hideClearBtn()
+    }
     setTimeout(() => {
       this._elementBlur(idx)
     },0)

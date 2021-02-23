@@ -57,6 +57,8 @@ export default function createDateTimeInside(self,{
   dataObj.reset = () => {
     $curEle.val('')
     dataObj.result = null
+    dataObj.dirty = null
+    hideClearBtn()
   }
 
   new Datetimepicker(params)

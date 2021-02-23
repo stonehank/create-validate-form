@@ -25,6 +25,7 @@ export default function createRadioInside(self,{
       $(tickerList[i]).removeClass('cvf-radio-selector-tick')
     }
     dataObj.result=null
+    dataObj.dirty=false
   }
   bindRadioEvent(self,$container.find('.cvf-radio-selector-container'),dataObj)
 }

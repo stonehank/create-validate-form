@@ -12,11 +12,15 @@ export default function createTextareaInside(self,{
   })
   $container.append($curEle)
 
+  let {showClearBtn,hideClearBtn}=self.addClearBtn($container,$curEle,dataObj)
+
   dataObj.reset=() => {
     $curEle.val('')
     dataObj.result=null
+    dataObj.dirty=null
     autoHeight.calcHeight()
+    hideClearBtn()
   }
-  let {showClearBtn,hideClearBtn}=self.addClearBtn($container,$curEle,dataObj)
+
   self.bindValidateEvent($curEle,dataObj,idx,showClearBtn,hideClearBtn)
 }

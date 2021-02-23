@@ -17,6 +17,8 @@ export default function bindSelectEvent(self,{
     curOptEles.forEach((optE) => $(optE).removeClass('cvf-select-active'))
     dataObj.result=null
     dataObj.textShow=null
+    dataObj.dirty=false
+    hideClearBtn()
   }
   dataObj.reset()
 

@@ -25,6 +25,7 @@ export default function createCheckboxInside(self,{
   dataObj.reset=() => {
     $selectorTick.removeClass('cvf-checkbox-selector-tick')
     dataObj.result=false
+    dataObj.dirty=false
   }
   if(dataObj.result){
     $selectorContainer.click()

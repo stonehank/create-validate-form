@@ -119,7 +119,7 @@ export default function bindSelectEvent(self,{
   function render(showThumbnail){
     $fileThumbnail.html('')
     $label.html('')
-    if(!Array.isArray(dataObj))return
+    if(!Array.isArray(dataObj.result))return
     for(let i=0; i<dataObj.result.length; i++){
       let curPath=dataObj.result[i]
       let curName=fileNameList[i]
