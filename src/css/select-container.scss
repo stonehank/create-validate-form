@@ -23,7 +23,7 @@
     transition:.5s;
     @media (hover: hover){
       &:not(.cvf-disabled):hover{
-        background:$border-color;
+        background:$backgroundColor;
       }
     }
   }

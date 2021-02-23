@@ -1,5 +1,6 @@
 export default function copyAttr($oldEle,$newEle,exclude,only=null){
   let attr=$oldEle.attr()
+  if(attr==null)return $newEle
   for(let key in attr){
     if(attr.hasOwnProperty(key)){
       if(only && !only.includes(key))continue

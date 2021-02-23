@@ -9,9 +9,12 @@ export default function createSelectInside(self,{
   let value=[]
   let name=[]
   let optEles=[]
+  let active=[]
 
   let isMulti=$curEle.attr('data-cvf-multiple')!=null
-  let $selectResult=$('<input class="cvf-select-result cvf-valid-field" readonly="readonly"/>')
+  let $selectResult=$('<input class="cvf-select-result cvf-valid-field" readonly/>')
+  let $selectQuery=$('<input class="cvf-select-query" />')
+  let $queryPanel=$('<span class="cvf-select-query-panel"></span>')
   let $selectWrapper=$('<div class="cvf-select-wrapper"></div>')
   let $selectOptCont=$('<div class="cvf-select-option-container"></div>')
   $selectWrapper=copyAttr($curEle,$selectWrapper,['data-cvf-label','data-cvf-multiple','class'])
@@ -21,26 +24,23 @@ export default function createSelectInside(self,{
     optEles.push(copyAttr($options.eq(i),$selectOptItem,['value']))
     value.push($options.eq(i).attr('value'))
     name.push($options.eq(i).text())
+    active.push($options.eq(i).attr('disabled')==null)
     $selectOptCont.append($selectOptItem)
   }
   $selectWrapper.append($selectResult)
+  $selectWrapper.append($selectQuery)
+  $selectWrapper.append($queryPanel)
   $('body').append($selectOptCont)
 
   for(let i=0; i<value.length; i++){
     optEles[i].text(name[i])
   }
-  dataObj.reset=() => {
-    $selectResult.val('')
-    optEles.forEach((optE) => $(optE).removeClass('cvf-select-active'))
-    dataObj.result=null
-    dataObj.textShow=null
-  }
-  dataObj.reset()
+
 
   $container.append($selectWrapper)
 
   let {showClearBtn,hideClearBtn}=self.addClearBtn($selectWrapper,$selectResult,dataObj)
   bindSelectEvent(self,{
-    value,name,optEles,dataObj,$selectResult,$selectOptCont,isMulti,idx,showClearBtn,hideClearBtn
+    value,name,optEles,active,dataObj,$queryPanel,$selectQuery,$selectResult,$selectOptCont,isMulti,idx,showClearBtn,hideClearBtn
   })
 }
