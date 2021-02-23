@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import bindFileEvent from './bindFileEvent'
 
 export default function createFileInside(self,{
@@ -47,6 +48,7 @@ export default function createFileInside(self,{
     onDocumentDragLeave(){}
   }
   let finalOptions=Object.assign(defaultOptions,uploadOptions)
+
   bindFileEvent(self,{
     $label,$curEle,dataObj,$fileThumbnail,idx,options:finalOptions
   })

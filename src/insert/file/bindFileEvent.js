@@ -12,6 +12,12 @@ export default function bindSelectEvent(self,{
   if (typeof options.convertResponseToPath !== 'function') {
     throw new Error('Must provide <convertResponseToPath> Function, which parameter are [id, data], and need to return the real path<String|Array>')
   }
+  dataObj.reset=() => {
+    dataObj.dirty=false
+    dataObj.result=null
+    render()
+  }
+
   setTimeout(() => {
     self._elementBlur(idx)
   },0)
@@ -113,6 +119,7 @@ export default function bindSelectEvent(self,{
   function render(showThumbnail){
     $fileThumbnail.html('')
     $label.html('')
+    if(!Array.isArray(dataObj))return
     for(let i=0; i<dataObj.result.length; i++){
       let curPath=dataObj.result[i]
       let curName=fileNameList[i]

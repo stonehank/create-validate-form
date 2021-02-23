@@ -60,6 +60,7 @@ class CreateValidateForm extends ValidateClass{
       this.elementData.forEach((dataObj,index) => {
         this.isValidates=[]
         this.dirty=[]
+        console.log(dataObj)
         dataObj.reset()
         this._elementBlur(index)
         this.validate_render(dataObj,index)
