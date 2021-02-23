@@ -100,7 +100,7 @@ export default function bindSelectEvent(self,{
   })
 
   function hasQuery(template,q){
-    return template.includes(q)
+    return template.toLowerCase().includes(q.toLowerCase())
   }
 
   function hideQueryPanel(){
