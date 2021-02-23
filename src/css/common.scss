@@ -297,6 +297,7 @@ $backgroundColor:#e2e2e2;
     cursor: pointer;
     color:$text-primary;
     margin-right:4px;
+    z-index:5;
   }
   .cvf-clear-icon{
     display: none;
@@ -311,6 +312,7 @@ $backgroundColor:#e2e2e2;
     //right: 0;
     cursor: pointer;
     color:$text-primary;
+    z-index:5;
     &:hover{
       color:$text-secondary
     }
