@@ -1,6 +1,6 @@
 {
   "name": "create-validate-form",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Create validate form without framework",
   "main": "dist/index.js",
   "scripts": {

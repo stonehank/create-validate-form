@@ -68,7 +68,7 @@ export default function bindSelectEvent(self,{
   $selectQuery.on('focus',(ev) => {
     ev.stopPropagation()
     self.dirty[idx]=true
-    console.log(dataObj.result,curValue)
+    // console.log(dataObj.result,curValue)
     selectShowDropdown(self,{idx,$selectOptCont,$selectResult})
   })
 
