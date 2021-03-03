@@ -16,7 +16,7 @@ export default function createSelectInside(self,{
   let $selectQuery=$('<input class="cvf-select-query" />')
   let $queryPanel=$('<span class="cvf-select-query-panel"></span>')
   let $selectWrapper=$('<div class="cvf-select-wrapper"></div>')
-  let $selectOptCont=$('<div class="cvf-select-option-container"></div>')
+  let $selectOptCont=$(`<div class="cvf-select-option-container" style="width:${$container.width()}px"></div>`)
   $selectWrapper=copyAttr($curEle,$selectWrapper,['data-cvf-label','data-cvf-multiple','class'])
 
   for(let i=0; i<$options.length; i++){
