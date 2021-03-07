@@ -5,13 +5,13 @@ import bindRadioEvent from './bindRadioEvent'
 export default function createRadioInside(self,{
   $curEle,$container,dataObj,idx
 }={}){
-  let {$labelEle,isDisabledList}=dataObj
+  let {$labelEle,isDisabledList,isDisabled}=dataObj
   let tickerList=[]
   for(let i=0; i<$labelEle.length; i++){
     let $selectorContainer = $('<div class="cvf-radio-selector-container"></div>')
     let $selectorBox=$('<div class="cvf-radio-selector-box"></div>')
     let $selectorTick=$('<div class="radio-ticker"></div>')
-    if(isDisabledList[i]){
+    if(isDisabledList[i] || isDisabled){
       $selectorBox.addClass('cvf-disabled')
     }
     tickerList.push($selectorTick)

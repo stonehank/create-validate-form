@@ -14,9 +14,16 @@ module.exports = {
   entry: isDev
     ? path.resolve(__dirname, 'sample/demo.js')
     : {
-      index:path.resolve(__dirname,
-        'src/index.js'),
-      verifyRules:path.resolve(__dirname, 'src/verifyRules.js')
+      index:path.resolve(__dirname, 'src/index.js'),
+      verifyRules:path.resolve(__dirname, 'src/verifyRules.js'),
+      'components/CreateValidateCheckbox':path.resolve(__dirname, 'src/components/CreateValidateCheckbox.js'),
+      'components/CreateValidateDatetime':path.resolve(__dirname, 'src/components/CreateValidateDatetime.js'),
+      'components/CreateValidateFile':path.resolve(__dirname, 'src/components/CreateValidateFile.js'),
+      'components/CreateValidatePassword':path.resolve(__dirname, 'src/components/CreateValidatePassword.js'),
+      'components/CreateValidateRadio':path.resolve(__dirname, 'src/components/CreateValidateRadio.js'),
+      'components/CreateValidateSelect':path.resolve(__dirname, 'src/components/CreateValidateSelect.js'),
+      'components/CreateValidateText':path.resolve(__dirname, 'src/components/CreateValidateText.js'),
+      'components/CreateValidateTextarea':path.resolve(__dirname, 'src/components/CreateValidateTextarea.js'),
     },
   output: {
     path: path.resolve(__dirname, 'dist'),

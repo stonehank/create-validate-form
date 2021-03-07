@@ -27,12 +27,13 @@ export default function createCheckboxInside(self,{
     dataObj.result=false
     dataObj.dirty=false
   }
-  if(dataObj.result){
-    $selectorContainer.click()
-  }
+
   if(isDisabled){
     $selectorBox.addClass('cvf-disabled')
     return
   }
   bindCheckboxEvent(self,$selectorContainer,$selectorTick,dataObj,idx)
+  if(dataObj.result){
+    $selectorContainer.click()
+  }
 }

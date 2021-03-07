@@ -1,5 +1,5 @@
 
-class CreateValidateForm {
+class ValidateClass {
   constructor({
     eleLength= null,
     showSuccess = true,
@@ -124,4 +124,4 @@ function addClassFromEles($ele,clsName){
   })
 }
 
-export default CreateValidateForm
+export default ValidateClass

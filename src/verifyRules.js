@@ -89,6 +89,9 @@ const verifyRules={
   multiSelect:[
     commonValidate.required('Multiple Select')
   ],
+  required:[
+    commonValidate.required('This field')
+  ],
   disabled:[
     null
     // commonValidate.required('Disabled')
