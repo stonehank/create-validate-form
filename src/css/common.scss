@@ -58,6 +58,7 @@ $backgroundColor:#e2e2e2;
       border-color: $info;
     }
     .cvf-fieldset-valid-form{
+      box-sizing: border-box;
       //top: -4px;
       left: 0;
       width: 100%;

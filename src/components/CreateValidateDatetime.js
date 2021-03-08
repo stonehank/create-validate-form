@@ -11,6 +11,7 @@ class CreateValidateDatetime extends CreateValidateElement{
     rules = [],
     material = true,
     showSuccess = true,
+    type='datetime'
   } = {}) {
     super({
       ele,
@@ -18,6 +19,7 @@ class CreateValidateDatetime extends CreateValidateElement{
       material,
       showSuccess,
     })
+    this.type=type
     this.init()
   }
   
@@ -25,13 +27,14 @@ class CreateValidateDatetime extends CreateValidateElement{
     let type=$curEle.attr('type')
     let realType=type
     if(type==='datetime-local' || type==='datetime')realType='datetime'
+    else if(type!=='time' && type!=='date')realType=this.type
     const [$container,dataObj]=createTextFieldHtmlObj(this,{$wrapper,$curEle,idx})
     createDateTimeInside(this,{
       $curEle,
       $container,
       dataObj,
       idx,
-      realType,
+      type:realType,
     })
   }
 }

@@ -19,7 +19,7 @@ $(document).ready(() => {
   
   new CreateValidateForm({
     ele:'#custom-form',
-    material:false,
+    material:true,
     showSuccess:true,
     otpOptions:{
       otp1:{

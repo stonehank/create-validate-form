@@ -60,7 +60,7 @@ export default function createDateTimeInside(self,{
     dataObj.dirty = null
     hideClearBtn()
   }
-
+  console.log(type,params)
   new Datetimepicker(params)
 
   self.bindValidateEvent($curEle, dataObj, idx, showClearBtn, hideClearBtn)

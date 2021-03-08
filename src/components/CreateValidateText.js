@@ -1,3 +1,4 @@
+import '../mask-options'
 import 'jquery-mask-plugin'
 import createTextFieldHtmlObj from '../insert/createTextFieldHtmlObj'
 import createInputInside from '../insert/input/createInputInside'

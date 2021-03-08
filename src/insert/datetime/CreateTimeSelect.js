@@ -52,10 +52,10 @@ export default class CreateTimeSelect{
       let deltaY=my-this.dy
       if(deltaY>30){
         this.dy=my
-        this.addOne()
+        this.minusOne()
       }else if(deltaY<-30){
         this.dy=my
-        this.minusOne()
+        this.addOne()
       }
     })
 

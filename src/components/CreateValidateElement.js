@@ -1,4 +1,3 @@
-// import '../css/common.scss'
 import '../enhance$attr'
 
 import $ from 'jquery'
@@ -14,6 +13,7 @@ class CreateValidateElement extends ValidateClass{
     material = true,
     showSuccess = true,
   } = {}) {
+    super({rules:[rules],eleLength:1,showSuccess})
     if (ele == null) {
       throw new Error('Need to provide a input[text] element')
     }
@@ -22,7 +22,6 @@ class CreateValidateElement extends ValidateClass{
       console.warn('Did not detect the [data-cvf] attribute.')
       return
     }
-    super({rules:[rules],eleLength:1,showSuccess})
     this.$ele=$ele
     this.elementData = []
     this.infoObj={}
