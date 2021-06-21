@@ -203,7 +203,7 @@ module.exports = {
   devServer: isDev ? {
     quiet:true,
     hot: true,
-    port: 3000,
+    port: 3333,
     host: getIP(),
   } : {},
 }

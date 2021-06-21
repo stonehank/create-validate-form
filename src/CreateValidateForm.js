@@ -258,10 +258,10 @@ class CreateValidateForm extends ValidateClass{
 
     return {
       showClearBtn:() => {
-        $btn.css({display:'flex'})
+        $btn.css({display:'flex',visibility: 'visible'})
       },
       hideClearBtn:() => {
-        $btn.css({display:'none'})
+        $btn.css({display:'none',visibility:'hidden'})
       }
     }
   }

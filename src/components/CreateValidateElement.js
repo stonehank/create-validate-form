@@ -30,7 +30,7 @@ class CreateValidateElement extends ValidateClass{
     this._elementFocus = this._elementFocus.bind(this)
     this._elementBlur= this._elementBlur.bind(this)
   }
-  
+
   reset(){
     this.elementData.forEach((dataObj,index) => {
       this.isValidates=[]
@@ -119,10 +119,10 @@ class CreateValidateElement extends ValidateClass{
 
     return {
       showClearBtn:() => {
-        $btn.css({display:'flex'})
+        $btn.css({display:'flex',visibility: 'visible'})
       },
       hideClearBtn:() => {
-        $btn.css({display:'none'})
+        $btn.css({display:'none',visibility:'hidden'})
       }
     }
   }
